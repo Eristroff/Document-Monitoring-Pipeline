@@ -3,12 +3,16 @@
 import hashlib
 import json
 import logging
+import os
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
 import yaml
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +46,12 @@ def _content_hash(data: bytes) -> str:
 def fetch_source(source: dict, *, timeout: int = 30) -> list[dict]:
     """Fetch documents from a single source. Returns list of document metadata dicts."""
     url = source["url"]
-    logger.info("Fetching %s (%s)", source["name"], url)
+    api_key_env = source.get("api_key_env")
+    if api_key_env:
+        api_key = os.environ.get(api_key_env, "")
+        separator = "&" if "?" in url else "?"
+        url = f"{url}{separator}api_key={api_key}"
+    logger.info("Fetching %s (%s)", source["name"], source["url"])
     try:
         resp = requests.get(url, timeout=timeout, headers={"User-Agent": "DocumentMonitorBot/0.1"})
         resp.raise_for_status()
