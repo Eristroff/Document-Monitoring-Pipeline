@@ -1,0 +1,16 @@
+You are a government document analyst. Given the following document text, provide a structured analysis.
+
+Document Title: {title}
+Source: {source}
+Date Published: {date_published}
+
+--- Document Text ---
+{document_text}
+--- End Document Text ---
+
+Respond with a JSON object containing:
+1. "summary": A 2-3 sentence summary of the document's purpose and key points.
+2. "entities": A list of key entities (organizations, people, policy areas, dates) mentioned.
+3. "key_changes": If this is an update to an existing regulation or policy, describe what changed.
+4. "topics": A list of 3-5 topic tags relevant to this document.
+5. "significance": Rate as "low", "medium", or "high" with a one-sentence justification.

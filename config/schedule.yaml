@@ -1,0 +1,14 @@
+pipeline:
+  crawl:
+    cron: "0 6 * * *"          # Daily at 6 AM UTC
+  ingestion:
+    cron: "30 6 * * *"         # Daily at 6:30 AM UTC
+  analysis:
+    cron: "0 7 * * *"          # Daily at 7 AM UTC
+  reporting:
+    cron: "0 8 * * 1"          # Weekly on Monday at 8 AM UTC
+
+settings:
+  timezone: UTC
+  max_retries: 3
+  retry_delay_seconds: 60
