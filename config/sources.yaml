@@ -1,15 +1,10 @@
 sources:
   - name: Federal Register
-    url: https://www.federalregister.gov/api/v1/documents.json
+    url: https://www.federalregister.gov/api/v1/documents.json?per_page=5&order=newest
     doc_type: regulation
     check_interval: daily
 
-  - name: Congress.gov Bills
-    url: https://api.congress.gov/v3/bill
-    doc_type: legislation
-    check_interval: weekly
-
-  - name: SEC EDGAR Filings
-    url: https://efts.sec.gov/LATEST/search-index
+  - name: SEC EDGAR Full-Text Search
+    url: https://efts.sec.gov/LATEST/search-index?q=%22annual+report%22&dateRange=custom&startdt=2026-06-01&enddt=2026-06-10&forms=10-K
     doc_type: filing
     check_interval: daily
