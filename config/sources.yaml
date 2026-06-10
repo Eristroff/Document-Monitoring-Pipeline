@@ -1,0 +1,15 @@
+sources:
+  - name: Federal Register
+    url: https://www.federalregister.gov/api/v1/documents.json
+    doc_type: regulation
+    check_interval: daily
+
+  - name: Congress.gov Bills
+    url: https://api.congress.gov/v3/bill
+    doc_type: legislation
+    check_interval: weekly
+
+  - name: SEC EDGAR Filings
+    url: https://efts.sec.gov/LATEST/search-index
+    doc_type: filing
+    check_interval: daily
